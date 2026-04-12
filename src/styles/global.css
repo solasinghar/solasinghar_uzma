@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Brand Colours ── */
+  --color-brand-gold:      #C9A84C;
+  --color-brand-gold-light: #E2C47A;
+  --color-brand-gold-dark:  #A07830;
+  --color-brand-burgundy:  #7B1C2A;
+  --color-brand-burgundy-light: #9B2D3E;
+  --color-brand-blush:     #F2DDD5;
+  --color-brand-ivory:     #FAF6F0;
+  --color-brand-charcoal:  #1A1A1A;
+  --color-brand-charcoal-soft: #2E2E2E;
+
+  /* ── Typography ── */
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* ── Spacing extras ── */
+  --spacing-section: 6rem;
+}
+
+/* ── Base resets & defaults ── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-body);
+    background-color: var(--color-brand-ivory);
+    color: var(--color-brand-charcoal);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    line-height: 1.15;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+/* ── Utility: ornamental divider ── */
+@layer utilities {
+  .divider-gold {
+    display: block;
+    width: 4rem;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-brand-gold),
+      transparent
+    );
+    margin-inline: auto;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
