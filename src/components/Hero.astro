@@ -455,52 +455,87 @@ import hero1 from "../images/Hero-1.jpg";
   .scroll-cue   { display: none; }
 }
 
-/* Mobile — stack vertically, text at bottom */
+/* ── TABLET ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .content-grid { grid-template-columns: 60% 40%; }
+
+  .h-brand { font-size: clamp(2.2rem, 8vw, 3.2rem); }
+  .h-reimagined { font-size: clamp(1.1rem, 3.5vw, 1.5rem); }
+
+  .cta-row { margin-top: 2.5rem; }
+}
+
+/* ── MOBILE ─────────────────────────────────────────────────── */
 @media (max-width: 640px) {
+
+  /* Full-screen single column, text pinned to bottom third */
   .content-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr;
     align-items: end;
   }
   .right-col { display: none; }
 
-  .left-col {
-    padding: 0 1.5rem clamp(3.5rem,9vh,5rem);
-    justify-content: flex-end;
-    overflow: visible;
-  }
+  /* Bride fills the full screen — face centred top half */
+  .bg-img { object-position: 50% 15%; }
 
-  /* Scrim: bottom-to-top on mobile */
-  .scrim {
+  /* Nav-cover: much thinner on mobile, just covers the navbar */
+  .nav-cover {
+    height: 70px;
     background: linear-gradient(
-      to top,
-      rgba(6,4,2,.97)  0%,
-      rgba(6,4,2,.90) 30%,
-      rgba(6,4,2,.50) 54%,
-      rgba(6,4,2,.08) 72%,
-      transparent      88%
+      to bottom,
+      rgba(6,4,2,.75) 0%,
+      transparent     100%
     );
   }
 
-  /* Bride's face stays visible at top */
-  .bg-img { object-position: 70% 8%; }
+  /* Bottom scrim — text reads over bride's dress, face stays clear */
+  .scrim {
+    background: linear-gradient(
+      to top,
+      rgba(6,4,2,.98)  0%,
+      rgba(6,4,2,.92) 25%,
+      rgba(6,4,2,.70) 45%,
+      rgba(6,4,2,.25) 62%,
+      transparent      78%
+    );
+  }
 
-  .tagline    { display: none; }
+  /* Text block sits at the bottom */
+  .left-col {
+    justify-content: flex-end;
+    padding: 0 1.6rem 2.8rem;
+    overflow: visible;
+  }
+
+  /* Tighter spacing between text elements on mobile */
+  .h-label    { margin-bottom: .9rem; }
+  .h-rule     { margin: 1rem 0; }
+  .h-brand    { font-size: clamp(2.4rem, 11vw, 3.4rem); margin-bottom: .4rem; }
+  .h-reimagined { font-size: clamp(1rem, 4.5vw, 1.3rem); }
+  .h-credit   { font-size: .6rem; }
+
+  /* Buttons: full width, stacked, reasonable height */
+  .cta-row {
+    flex-direction: column;
+    gap: .75rem;
+    margin-top: 1.8rem;
+  }
+  .btn-fill,
+  .btn-line {
+    width: 100%;
+    justify-content: center;
+    padding: .95rem 1.5rem;
+    font-size: .62rem;
+  }
+
   .award      { display: none; }
   .scroll-cue { display: none; }
-
-  .w-sola    { font-size: clamp(3.2rem, 14vw, 4.5rem); }
-  .w-singhar { font-size: clamp(2.8rem, 12vw, 4rem);   }
-
-  .rule  { margin: .9rem 0; }
-  .stats { margin-bottom: 1.4rem; }
 }
 
-/* iPhone SE */
+/* ── SMALL PHONES (iPhone SE etc.) ────────────────────────── */
 @media (max-width: 390px) {
-  .w-sola    { font-size: 3rem; }
-  .w-singhar { font-size: 2.6rem; }
-  .cta-row   { flex-direction: column; }
-  .btn-fill, .btn-line { width: 100%; justify-content: center; }
+  .h-brand  { font-size: 2.2rem; }
+  .left-col { padding: 0 1.2rem 2.2rem; }
 }
 </style>
