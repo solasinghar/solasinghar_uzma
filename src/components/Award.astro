@@ -9,10 +9,13 @@ const whatsappUrl = "https://wa.me/447777399135?text=Hi%20Uzma%2C%20I%27d%20like
 <section
   id="award"
   class="relative py-24 md:py-32 lg:py-40 overflow-hidden"
-  style="background-color: var(--color-burgundy); color: var(--color-ivory);"
+  style="background-color: #0D0A07; color: var(--color-ivory);"
 >
-  <!-- Background portrait -->
-  <div class="absolute inset-0 opacity-[0.18]">
+  <!-- Top gold border -->
+  <div class="absolute top-0 inset-x-0 h-px" style="background: linear-gradient(90deg, transparent, #D4AF37, transparent); opacity: 0.45;" aria-hidden="true"></div>
+
+  <!-- Background portrait — very subtle -->
+  <div class="absolute inset-0 opacity-[0.07]">
     <Image
       src={ceremonyImage}
       alt=""
@@ -25,10 +28,10 @@ const whatsappUrl = "https://wa.me/447777399135?text=Hi%20Uzma%2C%20I%27d%20like
     />
   </div>
 
-  <!-- Burgundy radial veil -->
+  <!-- Dark warm veil -->
   <div
     class="absolute inset-0"
-    style="background: radial-gradient(ellipse at center, rgba(123,28,42,0.5) 0%, var(--color-burgundy) 70%);"
+    style="background: radial-gradient(ellipse at center, rgba(30,20,10,0.4) 0%, rgba(13,10,7,0.85) 75%);"
     aria-hidden="true"
   ></div>
 
