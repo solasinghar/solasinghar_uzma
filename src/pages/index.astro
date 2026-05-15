@@ -1,649 +1,157 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import "../styles/global.css";
+import Navbar      from "../components/Navbar.astro";
+import Hero        from "../components/Hero.astro";
+import About       from "../components/About.astro";
+import Services    from "../components/Services.astro";
+import Award       from "../components/Award.astro";
+import Gallery     from "../components/Gallery.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Contact     from "../components/Contact.astro";
+import Footer      from "../components/Footer.astro";
 
-const whatsappUrl =
-  "https://wa.me/447777399135?text=Hi%20Uzma%2C%20I%27d%20like%20to%20book%20a%20bridal%20consultation";
+const siteTitle =
+  "SolaSinghar by Uzma — Best Bridal Makeup in Rawat & Islamabad | Award-Winning Pakistani Bridal Artistry";
+const siteDescription =
+  "Award-winning Pakistani bridal makeup, mehndi & hair styling near Java Road, Rawat–Islamabad. Trusted by 700+ brides since 2008. Winner of the All Pakistan Bridal Competition 2010, presented by the First Lady of Pakistan. Book on WhatsApp.";
+const canonical = "https://solasinghar.com/";
+const ogImage =
+  "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=1200&q=85&auto=format&fit=crop";
 
-const services = [
-  {
-    title: "Bridal Makeup",
-    urdu: "Dulhan Sajao",
-    description:
-      "Our signature artistry transforms you into the bride you have always envisioned — radiant, timeless, and unforgettably you.",
-    icon: "✦",
+// Schema.org LocalBusiness JSON-LD — strong local SEO signal
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "SolaSinghar by Uzma",
+  "image": ogImage,
+  "description": siteDescription,
+  "url": canonical,
+  "telephone": "+447777399135",
+  "priceRange": "$$$",
+  "founder": { "@type": "Person", "name": "Uzma Malik" },
+  "foundingDate": "2008",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Near Java Road",
+    "addressLocality": "Rawat",
+    "addressRegion": "Islamabad Capital Territory",
+    "addressCountry": "PK",
   },
-  {
-    title: "Mehndi",
-    urdu: "Riwayat",
-    description:
-      "Intricate henna designs rooted in tradition — from classic Pakistani motifs to contemporary fusion patterns that tell your story.",
-    icon: "✦",
+  "areaServed": [
+    { "@type": "City", "name": "Rawat" },
+    { "@type": "City", "name": "Islamabad" },
+    { "@type": "City", "name": "Rawalpindi" },
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "10:00",
+      "closes": "20:00",
+    },
+  ],
+  "award":
+    "Winner — All Pakistan Bridal Competition (2010), presented by the First Lady of Pakistan",
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bridal Makeup" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mehndi (Henna)" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hair Styling" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Party Makeup" } },
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "700",
   },
-  {
-    title: "Hair Styling",
-    urdu: "Shaan",
-    description:
-      "From sweeping updos to flowing waves, every style is crafted to complement your look and hold beautifully through your entire celebration.",
-    icon: "✦",
-  },
-  {
-    title: "Party Makeup",
-    urdu: "Jashn",
-    description:
-      "Mehendi nights, baraat, walima — each function deserves its own glow. We style you for every moment of your wedding journey.",
-    icon: "✦",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "Uzma Aapi made me feel like royalty on my wedding day. The makeup stayed flawless from nikah to walima. I cannot imagine trusting anyone else.",
-    name: "Fatima A.",
-    event: "Bride, 2024",
-  },
-  {
-    quote:
-      "I travelled from Lahore specifically for SolaSinghar. The artistry, the care, the attention to detail — absolutely worth every mile.",
-    name: "Nadia S.",
-    event: "Bride, 2023",
-  },
-  {
-    quote:
-      "My daughter looked breathtaking. Uzma understood exactly what we wanted and delivered beyond our expectations. Dil se shukriya.",
-    name: "Rukhsana M.",
-    event: "Mother of the Bride, 2024",
-  },
-];
+  "sameAs": [
+    "https://wa.me/447777399135",
+  ],
+};
 ---
 
-<Layout>
-  <!-- ─────────────────────────────────────────────
-       NAVBAR
-  ───────────────────────────────────────────── -->
-  <header
-    id="top"
-    class="fixed top-0 inset-x-0 z-50 flex items-center justify-between
-           px-6 md:px-12 py-4
-           bg-[var(--color-brand-ivory)]/90 backdrop-blur-sm
-           border-b border-[var(--color-brand-gold)]/20"
-  >
-    <!-- Wordmark -->
-    <a
-      href="#top"
-      class="font-[var(--font-heading)] text-xl md:text-2xl tracking-widest
-             text-[var(--color-brand-burgundy)] leading-none"
-    >
-      SolaSinghar<span class="block text-xs tracking-[0.3em] text-[var(--color-brand-gold)] font-[var(--font-body)] font-light uppercase">by Uzma</span>
-    </a>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
 
-    <!-- Nav links (hidden on mobile) -->
-    <nav class="hidden md:flex items-center gap-8 text-sm tracking-widest uppercase font-[var(--font-body)]">
-      <a href="#about"        class="text-[var(--color-brand-charcoal)] hover:text-[var(--color-brand-gold)] transition-colors">About</a>
-      <a href="#services"     class="text-[var(--color-brand-charcoal)] hover:text-[var(--color-brand-gold)] transition-colors">Services</a>
-      <a href="#gallery"      class="text-[var(--color-brand-charcoal)] hover:text-[var(--color-brand-gold)] transition-colors">Gallery</a>
-      <a href="#testimonials" class="text-[var(--color-brand-charcoal)] hover:text-[var(--color-brand-gold)] transition-colors">Reviews</a>
-      <a href="#contact"      class="text-[var(--color-brand-charcoal)] hover:text-[var(--color-brand-gold)] transition-colors">Contact</a>
-    </nav>
+    <title>{siteTitle}</title>
+    <meta name="description" content={siteDescription} />
+    <meta name="keywords" content="best bridal makeup in Rawat, best bridal makeup Islamabad, Pakistani bridal makeup, bridal artist Islamabad, mehndi designer Rawat, bridal hair stylist Islamabad, SolaSinghar, Uzma Malik, All Pakistan Bridal Competition winner" />
+    <meta name="author" content="Uzma Malik · SolaSinghar" />
+    <link rel="canonical" href={canonical} />
 
-    <!-- WhatsApp CTA -->
-    <a
-      href={whatsappUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex items-center gap-2 px-5 py-2 text-xs tracking-widest uppercase
-             bg-[var(--color-brand-burgundy)] text-[var(--color-brand-ivory)]
-             hover:bg-[var(--color-brand-gold)] transition-colors duration-300"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-      </svg>
-      Book Now
-    </a>
-  </header>
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:title"       content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:image"       content={ogImage} />
+    <meta property="og:locale"      content="en_PK" />
+    <meta property="og:site_name"   content="SolaSinghar by Uzma" />
 
+    <!-- Twitter -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:image"       content={ogImage} />
 
-  <!-- ─────────────────────────────────────────────
-       HERO
-  ───────────────────────────────────────────── -->
-  <section
-    id="hero"
-    class="relative min-h-screen flex items-end pb-20 md:pb-32 overflow-hidden"
-  >
-    <!-- Background image -->
-    <img
-      src="https://images.unsplash.com/photo-1610173827003-5f1e3c3c3e3e?w=1600&q=85"
-      alt="Bridal portrait"
-      class="absolute inset-0 w-full h-full object-cover object-center"
+    <!-- Geo / local -->
+    <meta name="geo.region"   content="PK-IS" />
+    <meta name="geo.placename" content="Rawat, Islamabad" />
+    <meta name="geo.position"  content="33.5128;73.1818" />
+    <meta name="ICBM"          content="33.5128, 73.1818" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#7B1C2A" />
+
+    <!-- Fonts (Bunny — privacy-friendly Google Fonts mirror) -->
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
+    <link
+      href="https://fonts.bunny.net/css?family=cormorant-garamond:300,400,500,600,500i,400i|dm-sans:300,400,500,600,700&display=swap"
+      rel="stylesheet"
     />
 
-    <!-- Gradient overlay -->
-    <div
-      class="absolute inset-0"
-      style="background: linear-gradient(to top, rgba(26,10,14,0.92) 30%, rgba(26,10,14,0.4) 70%, rgba(26,10,14,0.1) 100%);"
-    ></div>
+    <!-- Structured data: LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
+  </head>
 
-    <!-- Hero content -->
-    <div class="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-12">
-      <!-- Gold rule -->
-      <div class="w-16 h-px bg-[var(--color-brand-gold)] mb-8"></div>
+  <body class="antialiased">
+    <Navbar />
 
-      <p class="font-[var(--font-body)] text-[var(--color-brand-gold)] tracking-[0.4em] uppercase text-xs md:text-sm mb-4">
-        Award-Winning Bridal Studio · Islamabad
-      </p>
+    <main>
+      <Hero />
+      <About />
+      <Services />
+      <Award />
+      <Gallery />
+      <Testimonials />
+      <Contact />
+    </main>
 
-      <h1
-        class="font-[var(--font-heading)] text-5xl md:text-7xl lg:text-8xl
-               text-[var(--color-brand-ivory)] leading-[1.05] mb-6"
-      >
-        Your wedding day<br />
-        <em class="text-[var(--color-brand-gold)] not-italic">deserves perfection.</em>
-      </h1>
+    <Footer />
 
-      <p class="font-[var(--font-body)] text-[var(--color-brand-blush)] text-base md:text-lg max-w-xl mb-10 leading-relaxed">
-        Trusted by <strong class="text-[var(--color-brand-gold)] font-medium">700+ brides since 2008</strong>.
-        Bridal makeup, mehndi, hair & party styling — dil se, for the most important day of your life.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-3 px-8 py-4
-                 bg-[var(--color-brand-gold)] text-[var(--color-brand-charcoal)]
-                 font-[var(--font-body)] text-sm tracking-widest uppercase font-medium
-                 hover:bg-[var(--color-brand-gold-light)] transition-colors duration-300"
-        >
-          Book a Consultation
-        </a>
-        <a
-          href="#about"
-          class="inline-flex items-center justify-center gap-3 px-8 py-4
-                 border border-[var(--color-brand-ivory)]/40 text-[var(--color-brand-ivory)]
-                 font-[var(--font-body)] text-sm tracking-widest uppercase
-                 hover:border-[var(--color-brand-gold)] hover:text-[var(--color-brand-gold)]
-                 transition-colors duration-300"
-        >
-          Our Story
-        </a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────────
-       ABOUT
-  ───────────────────────────────────────────── -->
-  <section
-    id="about"
-    class="py-24 md:py-36 bg-[var(--color-brand-ivory)]"
-  >
-    <div class="max-w-6xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16 items-center">
-
-      <!-- Image -->
-      <div class="relative">
-        <img
-          src="https://images.unsplash.com/photo-1596386461350-326ccb383e9f?w=800&q=85"
-          alt="Uzma at work"
-          class="w-full aspect-[4/5] object-cover object-top"
-        />
-        <!-- Gold accent border -->
-        <div
-          class="absolute -bottom-4 -right-4 w-3/4 h-3/4 border border-[var(--color-brand-gold)]/40 -z-10"
-        ></div>
-      </div>
-
-      <!-- Text -->
-      <div>
-        <p class="font-[var(--font-body)] text-[var(--color-brand-gold)] tracking-[0.35em] uppercase text-xs mb-5">
-          Our Story
-        </p>
-        <h2 class="font-[var(--font-heading)] text-4xl md:text-5xl text-[var(--color-brand-charcoal)] mb-2">
-          Artistry born from<br /><em>passion &amp; tradition.</em>
-        </h2>
-        <span class="divider-gold my-6 !ml-0 !mr-auto"></span>
-
-        <p class="font-[var(--font-body)] text-[var(--color-brand-charcoal-soft)] leading-relaxed mb-5">
-          Since 2008, <strong>Uzma Malik</strong> has been shaping the bridal beauty landscape of Rawat, Islamabad — one bride at a time. What began as a deep love for artistry and an intimate understanding of Pakistani bridal aesthetics has grown into a studio trusted by over <strong>700 brides</strong>.
-        </p>
-        <p class="font-[var(--font-body)] text-[var(--color-brand-charcoal-soft)] leading-relaxed mb-8">
-          Uzma's talent was recognised on the national stage when she won the <strong>All Pakistan Bridal Competition (2010)</strong> — an award presented by the <strong>First Lady of Pakistan</strong>. That legacy of excellence is woven into every appointment at SolaSinghar.
-        </p>
-
-        <!-- Stats -->
-        <div class="grid grid-cols-3 gap-6 border-t border-[var(--color-brand-gold)]/20 pt-8">
-          <div>
-            <p class="font-[var(--font-heading)] text-3xl text-[var(--color-brand-burgundy)]">700+</p>
-            <p class="font-[var(--font-body)] text-xs tracking-widest uppercase text-[var(--color-brand-charcoal-soft)] mt-1">Brides Served</p>
-          </div>
-          <div>
-            <p class="font-[var(--font-heading)] text-3xl text-[var(--color-brand-burgundy)]">17+</p>
-            <p class="font-[var(--font-body)] text-xs tracking-widest uppercase text-[var(--color-brand-charcoal-soft)] mt-1">Years of Artistry</p>
-          </div>
-          <div>
-            <p class="font-[var(--font-heading)] text-3xl text-[var(--color-brand-burgundy)]">1</p>
-            <p class="font-[var(--font-body)] text-xs tracking-widest uppercase text-[var(--color-brand-charcoal-soft)] mt-1">National Award</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────────
-       SERVICES
-  ───────────────────────────────────────────── -->
-  <section
-    id="services"
-    class="py-24 md:py-36 bg-[var(--color-brand-charcoal)]"
-  >
-    <div class="max-w-6xl mx-auto px-6 md:px-12">
-      <!-- Section header -->
-      <div class="text-center mb-16">
-        <p class="font-[var(--font-body)] text-[var(--color-brand-gold)] tracking-[0.35em] uppercase text-xs mb-4">
-          What We Offer
-        </p>
-        <h2 class="font-[var(--font-heading)] text-4xl md:text-5xl text-[var(--color-brand-ivory)]">
-          Services crafted for<br /><em class="text-[var(--color-brand-gold)]">your every celebration.</em>
-        </h2>
-        <span class="divider-gold mt-6"></span>
-      </div>
-
-      <!-- Cards -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--color-brand-gold)]/20">
-        {services.map((service) => (
-          <div class="bg-[var(--color-brand-charcoal)] p-8 md:p-10 flex flex-col group
-                      hover:bg-[var(--color-brand-burgundy)] transition-colors duration-500">
-            <span class="text-[var(--color-brand-gold)] text-2xl mb-6">{service.icon}</span>
-            <h3 class="font-[var(--font-heading)] text-2xl text-[var(--color-brand-ivory)] mb-1">
-              {service.title}
-            </h3>
-            <p class="font-[var(--font-body)] text-[var(--color-brand-gold)]/60 text-xs tracking-widest italic mb-4">
-              {service.urdu}
-            </p>
-            <p class="font-[var(--font-body)] text-[var(--color-brand-blush)]/70 text-sm leading-relaxed flex-grow">
-              {service.description}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────────
-       GALLERY
-  ───────────────────────────────────────────── -->
-  <section
-    id="gallery"
-    class="py-24 md:py-36 bg-[var(--color-brand-ivory)]"
-  >
-    <div class="max-w-6xl mx-auto px-6 md:px-12">
-      <!-- Section header -->
-      <div class="text-center mb-16">
-        <p class="font-[var(--font-body)] text-[var(--color-brand-gold)] tracking-[0.35em] uppercase text-xs mb-4">
-          Portfolio
-        </p>
-        <h2 class="font-[var(--font-heading)] text-4xl md:text-5xl text-[var(--color-brand-charcoal)]">
-          Moments of beauty,<br /><em>captured forever.</em>
-        </h2>
-        <span class="divider-gold mt-6"></span>
-      </div>
-
-      <!-- Masonry-style grid -->
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-        <!-- Tall feature image -->
-        <div class="row-span-2 overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&q=80"
-            alt="Bridal makeup"
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-          />
-        </div>
-        <div class="overflow-hidden aspect-square">
-          <img
-            src="https://images.unsplash.com/photo-1583243566125-b9a3e8e3c6f6?w=600&q=80"
-            alt="Bridal mehndi"
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-          />
-        </div>
-        <div class="overflow-hidden aspect-square">
-          <img
-            src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&q=80"
-            alt="Bridal hair styling"
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-          />
-        </div>
-        <div class="overflow-hidden aspect-square">
-          <img
-            src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&q=80"
-            alt="South Asian bride"
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-          />
-        </div>
-        <div class="overflow-hidden aspect-square">
-          <img
-            src="https://images.unsplash.com/photo-1576836165612-8bc9b07e7778?w=600&q=80"
-            alt="Henna design detail"
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-          />
-        </div>
-        <!-- Wide bottom image -->
-        <div class="col-span-2 md:col-span-1 overflow-hidden aspect-video md:aspect-square">
-          <img
-            src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&q=80"
-            alt="Party makeup"
-            class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────────
-       TESTIMONIALS
-  ───────────────────────────────────────────── -->
-  <section
-    id="testimonials"
-    class="py-24 md:py-36 bg-[var(--color-brand-blush)]"
-  >
-    <div class="max-w-6xl mx-auto px-6 md:px-12">
-      <div class="text-center mb-16">
-        <p class="font-[var(--font-body)] text-[var(--color-brand-burgundy)] tracking-[0.35em] uppercase text-xs mb-4">
-          From Our Brides
-        </p>
-        <h2 class="font-[var(--font-heading)] text-4xl md:text-5xl text-[var(--color-brand-charcoal)]">
-          Words from the<br /><em>hearts we've adorned.</em>
-        </h2>
-        <span class="divider-gold mt-6"></span>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        {testimonials.map((t) => (
-          <div class="bg-[var(--color-brand-ivory)] p-8 md:p-10 flex flex-col">
-            <!-- Quote mark -->
-            <span class="font-[var(--font-heading)] text-6xl text-[var(--color-brand-gold)]/30 leading-none mb-4 select-none">"</span>
-            <p class="font-[var(--font-body)] text-[var(--color-brand-charcoal-soft)] leading-relaxed text-sm flex-grow mb-8 italic">
-              {t.quote}
-            </p>
-            <div class="border-t border-[var(--color-brand-gold)]/20 pt-5">
-              <p class="font-[var(--font-heading)] text-lg text-[var(--color-brand-burgundy)]">{t.name}</p>
-              <p class="font-[var(--font-body)] text-xs tracking-widest uppercase text-[var(--color-brand-gold)] mt-1">{t.event}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────────
-       AWARD / TRUST BADGE
-  ───────────────────────────────────────────── -->
-  <section
-    class="py-20 md:py-28"
-    style="background: linear-gradient(135deg, var(--color-brand-burgundy) 0%, #4A1020 100%);"
-  >
-    <div class="max-w-3xl mx-auto px-6 md:px-12 text-center">
-      <!-- Ornament -->
-      <div class="flex items-center justify-center gap-4 mb-8">
-        <div class="h-px w-16 bg-[var(--color-brand-gold)]/50"></div>
-        <span class="text-[var(--color-brand-gold)] text-2xl">✦</span>
-        <div class="h-px w-16 bg-[var(--color-brand-gold)]/50"></div>
-      </div>
-
-      <p class="font-[var(--font-body)] text-[var(--color-brand-gold)] tracking-[0.35em] uppercase text-xs mb-6">
-        National Recognition
-      </p>
-
-      <h2 class="font-[var(--font-heading)] text-3xl md:text-5xl text-[var(--color-brand-ivory)] leading-tight mb-6">
-        Winner — All Pakistan<br />Bridal Competition
-      </h2>
-
-      <p class="font-[var(--font-body)] text-[var(--color-brand-blush)]/80 text-base leading-relaxed mb-4">
-        In 2010, Uzma Malik was honoured with the top award at the All Pakistan Bridal Competition — a distinction presented by the <strong class="text-[var(--color-brand-gold)]">First Lady of Pakistan</strong>.
-      </p>
-      <p class="font-[var(--font-body)] text-[var(--color-brand-blush)]/60 text-sm italic">
-        A legacy of excellence, carried into every bride's story since.
-      </p>
-
-      <div class="flex items-center justify-center gap-4 mt-8">
-        <div class="h-px w-16 bg-[var(--color-brand-gold)]/50"></div>
-        <span class="text-[var(--color-brand-gold)] text-2xl">✦</span>
-        <div class="h-px w-16 bg-[var(--color-brand-gold)]/50"></div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────────
-       CONTACT / BOOKING
-  ───────────────────────────────────────────── -->
-  <section
-    id="contact"
-    class="py-24 md:py-36 bg-[var(--color-brand-ivory)]"
-  >
-    <div class="max-w-6xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16 items-start">
-
-      <!-- Info -->
-      <div>
-        <p class="font-[var(--font-body)] text-[var(--color-brand-gold)] tracking-[0.35em] uppercase text-xs mb-5">
-          Book Your Consultation
-        </p>
-        <h2 class="font-[var(--font-heading)] text-4xl md:text-5xl text-[var(--color-brand-charcoal)] mb-6">
-          Your journey<br /><em>begins here.</em>
-        </h2>
-        <span class="divider-gold mb-8 !ml-0 !mr-auto"></span>
-
-        <p class="font-[var(--font-body)] text-[var(--color-brand-charcoal-soft)] leading-relaxed mb-10">
-          We'd love to be part of your special day. Reach out via WhatsApp for the fastest response, or use the enquiry form and we'll get back to you within 24 hours.
-        </p>
-
-        <!-- Contact details -->
-        <ul class="space-y-5 font-[var(--font-body)]">
-          <li class="flex items-start gap-4">
-            <span class="text-[var(--color-brand-gold)] mt-0.5">✦</span>
-            <div>
-              <p class="text-xs tracking-widest uppercase text-[var(--color-brand-gold)] mb-1">WhatsApp</p>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[var(--color-brand-charcoal)] hover:text-[var(--color-brand-burgundy)] transition-colors"
-              >
-                +44 7777 399135
-              </a>
-            </div>
-          </li>
-          <li class="flex items-start gap-4">
-            <span class="text-[var(--color-brand-gold)] mt-0.5">✦</span>
-            <div>
-              <p class="text-xs tracking-widest uppercase text-[var(--color-brand-gold)] mb-1">Location</p>
-              <p class="text-[var(--color-brand-charcoal)]">Near Java Road, Rawat,<br />Islamabad, Pakistan</p>
-            </div>
-          </li>
-          <li class="flex items-start gap-4">
-            <span class="text-[var(--color-brand-gold)] mt-0.5">✦</span>
-            <div>
-              <p class="text-xs tracking-widest uppercase text-[var(--color-brand-gold)] mb-1">Hours</p>
-              <p class="text-[var(--color-brand-charcoal)]">By appointment only</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Enquiry form -->
-      <form
-        name="bridal-enquiry"
-        method="POST"
-        data-netlify="true"
-        class="flex flex-col gap-5"
-      >
-        <input type="hidden" name="form-name" value="bridal-enquiry" />
-
-        <div class="flex flex-col gap-1.5">
-          <label
-            for="name"
-            class="font-[var(--font-body)] text-xs tracking-widest uppercase text-[var(--color-brand-gold)]"
-          >Your Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            placeholder="Fatima Malik"
-            class="px-4 py-3 border border-[var(--color-brand-gold)]/30
-                   bg-transparent font-[var(--font-body)] text-sm
-                   text-[var(--color-brand-charcoal)] placeholder:text-[var(--color-brand-charcoal)]/30
-                   focus:outline-none focus:border-[var(--color-brand-gold)] transition-colors"
-          />
-        </div>
-
-        <div class="flex flex-col gap-1.5">
-          <label
-            for="phone"
-            class="font-[var(--font-body)] text-xs tracking-widest uppercase text-[var(--color-brand-gold)]"
-          >Phone / WhatsApp</label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="+92 300 0000000"
-            class="px-4 py-3 border border-[var(--color-brand-gold)]/30
-                   bg-transparent font-[var(--font-body)] text-sm
-                   text-[var(--color-brand-charcoal)] placeholder:text-[var(--color-brand-charcoal)]/30
-                   focus:outline-none focus:border-[var(--color-brand-gold)] transition-colors"
-          />
-        </div>
-
-        <div class="flex flex-col gap-1.5">
-          <label
-            for="date"
-            class="font-[var(--font-body)] text-xs tracking-widest uppercase text-[var(--color-brand-gold)]"
-          >Wedding Date</label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            class="px-4 py-3 border border-[var(--color-brand-gold)]/30
-                   bg-transparent font-[var(--font-body)] text-sm
-                   text-[var(--color-brand-charcoal)]
-                   focus:outline-none focus:border-[var(--color-brand-gold)] transition-colors"
-          />
-        </div>
-
-        <div class="flex flex-col gap-1.5">
-          <label
-            for="message"
-            class="font-[var(--font-body)] text-xs tracking-widest uppercase text-[var(--color-brand-gold)]"
-          >Message</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            placeholder="Tell us about your wedding and the services you're interested in…"
-            class="px-4 py-3 border border-[var(--color-brand-gold)]/30
-                   bg-transparent font-[var(--font-body)] text-sm
-                   text-[var(--color-brand-charcoal)] placeholder:text-[var(--color-brand-charcoal)]/30
-                   focus:outline-none focus:border-[var(--color-brand-gold)] transition-colors resize-none"
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          class="mt-2 px-8 py-4 bg-[var(--color-brand-burgundy)] text-[var(--color-brand-ivory)]
-                 font-[var(--font-body)] text-sm tracking-widest uppercase
-                 hover:bg-[var(--color-brand-gold)] hover:text-[var(--color-brand-charcoal)]
-                 transition-colors duration-300 cursor-pointer"
-        >
-          Send Enquiry
-        </button>
-      </form>
-
-    </div>
-  </section>
-
-
-  <!-- ─────────────────────────────────────────────
-       FOOTER
-  ───────────────────────────────────────────── -->
-  <footer class="bg-[var(--color-brand-charcoal)] py-16">
-    <div class="max-w-6xl mx-auto px-6 md:px-12">
-
-      <div class="grid md:grid-cols-3 gap-12 mb-12">
-        <!-- Brand -->
-        <div>
-          <p class="font-[var(--font-heading)] text-2xl text-[var(--color-brand-ivory)] tracking-widest mb-1">
-            SolaSinghar
-          </p>
-          <p class="font-[var(--font-body)] text-xs tracking-[0.35em] uppercase text-[var(--color-brand-gold)] mb-4">
-            by Uzma
-          </p>
-          <p class="font-[var(--font-body)] text-sm text-[var(--color-brand-blush)]/60 leading-relaxed">
-            Award-winning bridal studio near Java Road, Rawat, Islamabad. Trusted by 700+ brides since 2008.
-          </p>
-        </div>
-
-        <!-- Navigation -->
-        <div>
-          <p class="font-[var(--font-body)] text-xs tracking-[0.35em] uppercase text-[var(--color-brand-gold)] mb-5">
-            Navigate
-          </p>
-          <ul class="space-y-3 font-[var(--font-body)] text-sm">
-            {[
-              { href: "#about",        label: "About" },
-              { href: "#services",     label: "Services" },
-              { href: "#gallery",      label: "Gallery" },
-              { href: "#testimonials", label: "Reviews" },
-              { href: "#contact",      label: "Contact" },
-            ].map(({ href, label }) => (
-              <li>
-                <a
-                  href={href}
-                  class="text-[var(--color-brand-blush)]/60 hover:text-[var(--color-brand-gold)] transition-colors"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <!-- Book CTA -->
-        <div>
-          <p class="font-[var(--font-body)] text-xs tracking-[0.35em] uppercase text-[var(--color-brand-gold)] mb-5">
-            Book Now
-          </p>
-          <p class="font-[var(--font-body)] text-sm text-[var(--color-brand-blush)]/60 leading-relaxed mb-6">
-            The fastest way to secure your date is via WhatsApp. Don't wait — our calendar fills quickly.
-          </p>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-6 py-3
-                   border border-[var(--color-brand-gold)]/40 text-[var(--color-brand-gold)]
-                   font-[var(--font-body)] text-xs tracking-widest uppercase
-                   hover:bg-[var(--color-brand-gold)] hover:text-[var(--color-brand-charcoal)]
-                   hover:border-[var(--color-brand-gold)] transition-colors duration-300"
-          >
-            WhatsApp Us
-          </a>
-        </div>
-      </div>
-
-      <!-- Divider + copyright -->
-      <div class="border-t border-[var(--color-brand-gold)]/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p class="font-[var(--font-body)] text-xs text-[var(--color-brand-blush)]/30 tracking-wide">
-          &copy; {new Date().getFullYear()} SolaSinghar by Uzma. All rights reserved.
-        </p>
-        <p class="font-[var(--font-body)] text-xs text-[var(--color-brand-blush)]/20 tracking-widest uppercase">
-          Near Java Road, Rawat, Islamabad
-        </p>
-      </div>
-
-    </div>
-  </footer>
-</Layout>
+    <!-- Reveal-on-scroll observer (progressive enhancement) -->
+    <script is:inline>
+      (() => {
+        if (typeof IntersectionObserver === "undefined") return;
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
+        );
+        document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+      })();
+    </script>
+  </body>
+</html>

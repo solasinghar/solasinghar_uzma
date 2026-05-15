@@ -1,0 +1,118 @@
+---
+import { Image } from "astro:assets";
+import portraitImg from "../images/Uzma Malik.jpg";
+import detailImg from "../images/About 1.jpg";
+
+const portrait = portraitImg;
+const detail   = detailImg;
+---
+
+<section
+  id="about"
+  class="relative py-24 md:py-32 lg:py-40 overflow-hidden"
+  style="background-color: var(--color-ivory);"
+>
+  <!-- Subtle pattern backdrop -->
+  <div class="absolute inset-0 pattern-mehndi opacity-60" aria-hidden="true"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      <!-- Imagery column -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative">
+          <!-- Primary portrait -->
+          <div class="relative aspect-[4/5] overflow-hidden">
+            <Image
+              src={portrait}
+              alt="Uzma Malik — founder of SolaSinghar by Uzma, at her studio in Rawat, Islamabad"
+              width={1200}
+              height={1500}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Floating accent image -->
+          <div class="absolute -bottom-10 -right-6 lg:-right-16 w-40 lg:w-56 aspect-square overflow-hidden border-8 hidden md:block" style="border-color: var(--color-ivory); box-shadow: 0 30px 60px -20px rgba(26,26,26,0.25);">
+            <Image
+              src={detail}
+              alt="Detail of golden bridal jewelry — heirloom craftsmanship"
+              width={600}
+              height={600}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Gold frame accent -->
+          <div
+            class="absolute -top-4 -left-4 w-24 h-24 border-l border-t hidden lg:block"
+            style="border-color: var(--color-gold);"
+            aria-hidden="true"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Copy column -->
+      <div class="lg:col-span-7 lg:pl-8">
+        <p class="eyebrow mb-6" style="color: var(--color-burgundy);">
+          Dil se · Since 2008
+        </p>
+
+        <h2 class="section-heading mb-8" style="color: var(--color-charcoal);">
+          A legacy of <em>Pakistani bridal artistry,</em> shaped by hand &amp; heart.
+        </h2>
+
+        <div class="space-y-6 max-w-2xl text-base md:text-lg leading-relaxed" style="color: rgba(26,26,26,0.78);">
+          <p>
+            <span style="font-family: var(--font-heading); font-size: 1.5em; font-weight: 500; color: var(--color-burgundy); float: left; line-height: 0.9; padding: 0.1em 0.1em 0 0;">F</span>or
+            over fifteen years, Uzma Malik has been the trusted name behind hundreds of unforgettable
+            wedding mornings in Rawat &amp; Islamabad. What began as a quiet studio near Java Road in 2008
+            is today a sanctuary where heirloom <em style="color: var(--color-burgundy);">riwayat</em> meets
+            modern editorial finesse.
+          </p>
+          <p>
+            Every bride is met with the same promise — patient, considered work that honours her features,
+            her fabric, and her family's story. From an intimate <em>nikkah</em> to a multi-day <em>shaadi</em>,
+            the goal is the same: a face the bride still recognises in her photos twenty years later.
+          </p>
+          <p>
+            In 2010, this dedication was honoured at the <strong style="color: var(--color-charcoal);">All Pakistan
+            Bridal Competition</strong>, where Uzma was awarded the top prize by the
+            <strong style="color: var(--color-burgundy);">First Lady of Pakistan</strong> — a recognition that
+            continues to anchor every brush stroke at SolaSinghar.
+          </p>
+        </div>
+
+        <!-- Stat strip -->
+        <div class="mt-12 grid grid-cols-3 border-t border-b py-8" style="border-color: rgba(201,168,76,0.4);">
+          <div class="text-center px-2">
+            <div class="text-4xl md:text-5xl font-light mb-1" style="font-family: var(--font-heading); color: var(--color-burgundy);">700+</div>
+            <div class="text-[11px] uppercase tracking-[0.24em]" style="color: var(--color-charcoal-soft);">Brides Served</div>
+          </div>
+          <div class="text-center px-2 border-l border-r" style="border-color: rgba(201,168,76,0.4);">
+            <div class="text-4xl md:text-5xl font-light mb-1" style="font-family: var(--font-heading); color: var(--color-burgundy);">17+</div>
+            <div class="text-[11px] uppercase tracking-[0.24em]" style="color: var(--color-charcoal-soft);">Years of Craft</div>
+          </div>
+          <div class="text-center px-2">
+            <div class="text-4xl md:text-5xl font-light mb-1" style="font-family: var(--font-heading); color: var(--color-burgundy);">2010</div>
+            <div class="text-[11px] uppercase tracking-[0.24em]" style="color: var(--color-charcoal-soft);">National Award</div>
+          </div>
+        </div>
+
+        <!-- Signature -->
+        <div class="mt-10 flex items-center gap-4">
+          <div class="text-3xl md:text-4xl" style="font-family: 'Cormorant Garamond', cursive; color: var(--color-burgundy); font-style: italic; font-weight: 500;">
+            — Uzma Malik
+          </div>
+          <div class="h-px flex-1" style="background-color: var(--color-gold); opacity: 0.4;"></div>
+          <div class="text-xs uppercase tracking-[0.3em]" style="color: var(--color-charcoal-soft);">
+            Founder
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

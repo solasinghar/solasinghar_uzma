@@ -1,0 +1,184 @@
+---
+const phone = "+44 7777 399 135";
+const email = "hello@solasinghar.com";
+const address = "Near Java Road, Rawat, Islamabad, Pakistan";
+const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Java+Road+Rawat+Islamabad";
+const mapsEmbed = "https://www.google.com/maps?q=Java%20Road%20Rawat%20Islamabad&z=14&output=embed";
+
+const whatsappBridal = "https://wa.me/447777399135?text=" + encodeURIComponent("Hi Uzma, I’d like to book a bridal consultation. My wedding date is …");
+const whatsappParty  = "https://wa.me/447777399135?text=" + encodeURIComponent("Hi Uzma, I’d like to enquire about a party / event makeup booking.");
+---
+
+<section
+  id="contact"
+  class="relative py-24 md:py-32 lg:py-40"
+  style="background-color: var(--color-ivory);"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+      <p class="eyebrow mb-6" style="color: var(--color-burgundy);">
+        Contact · Tashreef
+      </p>
+      <h2 class="section-heading" style="color: var(--color-charcoal);">
+        Reserve your <em>wedding morning</em> at the studio.
+      </h2>
+      <p class="mt-6 text-lg leading-relaxed" style="color: rgba(26,26,26,0.7);">
+        Bookings are taken in person, by phone, or via WhatsApp. Bridal dates fill quickly during
+        peak shaadi season — we recommend reaching out at least 6–8 weeks before your event.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+      <!-- Contact info column -->
+      <div class="lg:col-span-5 space-y-8">
+        <!-- WhatsApp primary card -->
+        <a
+          href={whatsappBridal}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group block p-8 lg:p-10 border transition-all duration-500 hover:shadow-[0_30px_60px_-20px_rgba(123,28,42,0.25)]"
+          style="background-color: var(--color-burgundy); color: var(--color-ivory); border-color: var(--color-gold);"
+        >
+          <div class="flex items-start justify-between mb-6">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background-color: rgba(201,168,76,0.18); border: 1px solid var(--color-gold);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--color-gold)" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+              </svg>
+            </div>
+            <span class="text-[10px] uppercase tracking-[0.32em]" style="color: var(--color-gold);">
+              Fastest Response
+            </span>
+          </div>
+          <div class="text-xs uppercase tracking-[0.28em] mb-3" style="color: var(--color-gold-soft);">
+            Book on WhatsApp
+          </div>
+          <div class="text-3xl md:text-4xl font-light leading-tight mb-4" style="font-family: var(--font-heading);">
+            {phone}
+          </div>
+          <div class="inline-flex items-center gap-2 text-sm uppercase tracking-[0.24em] transition-transform duration-500 group-hover:translate-x-1" style="color: var(--color-gold);">
+            Send a Message
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="13 6 19 12 13 18"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Address -->
+        <div class="p-8 border" style="background-color: var(--color-ivory); border-color: rgba(201,168,76,0.4);">
+          <div class="flex items-start gap-4">
+            <div class="shrink-0 w-10 h-10 rounded-full flex items-center justify-center mt-1" style="background-color: rgba(123,28,42,0.08);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-burgundy)" stroke-width="1.5" aria-hidden="true">
+                <path d="M12 22s-8-7.5-8-13a8 8 0 1 1 16 0c0 5.5-8 13-8 13z"/>
+                <circle cx="12" cy="9" r="3"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <div class="text-xs uppercase tracking-[0.28em] mb-2" style="color: var(--color-burgundy);">
+                Studio Address
+              </div>
+              <address
+                class="not-italic text-lg leading-relaxed mb-3"
+                style="font-family: var(--font-heading); color: var(--color-charcoal); font-weight: 500;"
+              >
+                SolaSinghar by Uzma<br />
+                {address}
+              </address>
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] transition-colors duration-500"
+                style="color: var(--color-burgundy);"
+              >
+                Open in Google Maps
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M14 4h6v6"/><path d="M10 14L20 4"/>
+                  <path d="M20 14v6h-6"/><path d="M4 4h6"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hours + email -->
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="p-6 border" style="background-color: var(--color-ivory); border-color: rgba(201,168,76,0.4);">
+            <div class="text-xs uppercase tracking-[0.28em] mb-3" style="color: var(--color-burgundy);">
+              Studio Hours
+            </div>
+            <div class="text-sm leading-relaxed" style="color: var(--color-charcoal);">
+              Mon — Sat<br />
+              <span style="color: var(--color-charcoal-soft);">10:00 AM — 8:00 PM</span><br />
+              <span class="block mt-2 text-[11px] uppercase tracking-[0.22em]" style="color: var(--color-burgundy);">
+                Sunday by appointment
+              </span>
+            </div>
+          </div>
+          <a
+            href={`mailto:${email}`}
+            class="p-6 border block transition-colors duration-500"
+            style="background-color: var(--color-ivory); border-color: rgba(201,168,76,0.4);"
+            onmouseover="this.style.borderColor='var(--color-burgundy)'"
+            onmouseout="this.style.borderColor='rgba(201,168,76,0.4)'"
+          >
+            <div class="text-xs uppercase tracking-[0.28em] mb-3" style="color: var(--color-burgundy);">
+              Email
+            </div>
+            <div class="text-sm break-all" style="color: var(--color-charcoal);">
+              {email}
+            </div>
+            <div class="text-[11px] uppercase tracking-[0.22em] mt-2" style="color: var(--color-charcoal-soft);">
+              Replies within 24h
+            </div>
+          </a>
+        </div>
+
+        <!-- Quick action: party makeup -->
+        <a
+          href={whatsappParty}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block text-center text-sm uppercase tracking-[0.28em] py-4 transition-colors duration-500"
+          style="border-bottom: 1px solid var(--color-gold); color: var(--color-charcoal-soft);"
+          onmouseover="this.style.color='var(--color-burgundy)'"
+          onmouseout="this.style.color='var(--color-charcoal-soft)'"
+        >
+          Or enquire about Party Makeup &rarr;
+        </a>
+      </div>
+
+      <!-- Map column -->
+      <div class="lg:col-span-7">
+        <div class="relative h-full min-h-[460px] lg:min-h-full border overflow-hidden" style="border-color: rgba(201,168,76,0.4);">
+          <iframe
+            src={mapsEmbed}
+            class="absolute inset-0 w-full h-full"
+            style="filter: grayscale(0.25) contrast(0.95) sepia(0.08);"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+            title="SolaSinghar by Uzma — Java Road, Rawat, Islamabad map"
+          ></iframe>
+
+          <!-- Map overlay caption -->
+          <div
+            class="absolute bottom-6 left-6 right-6 md:right-auto md:max-w-sm p-5 backdrop-blur-md"
+            style="background-color: rgba(250,246,240,0.96); border: 1px solid var(--color-gold);"
+          >
+            <div class="text-[10px] uppercase tracking-[0.32em] mb-2" style="color: var(--color-burgundy);">
+              The Studio
+            </div>
+            <div class="text-base font-medium" style="color: var(--color-charcoal); font-family: var(--font-heading); font-size: 1.25rem;">
+              Best Bridal Makeup in Rawat &amp; Islamabad
+            </div>
+            <div class="text-sm mt-1" style="color: var(--color-charcoal-soft);">
+              Near Java Road · 20 min from F-7
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,19 +1,33 @@
 {
-  "name": "solasinghar",
+  "name": "solasinghar-by-uzma",
   "type": "module",
-  "version": "0.0.1",
-  "engines": {
-    "node": ">=22.12.0"
-  },
+  "version": "1.0.0",
+  "description": "SolaSinghar by Uzma — high-end bridal salon website (Rawat, Islamabad)",
+  "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "start": "astro dev",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "dependencies": {
+    "@astrojs/language-server": "^2.16.7",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.1.5",
+    "sharp": "^0.33.5",
     "tailwindcss": "^4.2.2"
-  }
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^5.6.3"
+  },
+  "overrides": {
+    "vite": "^7.0.0",
+    "yaml": "^2.8.3"
+}
+  
 }

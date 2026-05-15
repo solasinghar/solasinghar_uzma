@@ -1,65 +1,113 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Brand Colours ── */
-  --color-brand-gold:      #C9A84C;
-  --color-brand-gold-light: #E2C47A;
-  --color-brand-gold-dark:  #A07830;
-  --color-brand-burgundy:  #7B1C2A;
-  --color-brand-burgundy-light: #9B2D3E;
-  --color-brand-blush:     #F2DDD5;
-  --color-brand-ivory:     #FAF6F0;
-  --color-brand-charcoal:  #1A1A1A;
-  --color-brand-charcoal-soft: #2E2E2E;
+  /* Brand palette */
+  --color-burgundy:        #7B1C2A;
+  --color-burgundy-deep:   #4A0E18;
+  --color-burgundy-light:  #A32638;
+  --color-gold:            #D4AF37; /* Brighter metallic gold */
+  --color-gold-soft:       #F1E5AC;
+  --color-gold-deep:       #B8860B;
+  --color-ivory:           #FAF6F0;
+  --color-ivory-warm:      #FFFBF5;
+  --color-charcoal:        #0F0F0F; /* Darker for better gold contrast */
 
-  /* ── Typography ── */
-  --font-heading: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body:    'DM Sans', sans-serif;
 
-  /* ── Spacing extras ── */
-  --spacing-section: 6rem;
+  /* Motion */
+  --ease-luxe: cubic-bezier(0.19, 1, 0.22, 1);
+  --duration-luxe: 700ms;
 }
 
-/* ── Base resets & defaults ── */
 @layer base {
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
+  html { scroll-behavior: smooth; }
+  body {
     font-family: var(--font-body);
-    background-color: var(--color-brand-ivory);
-    color: var(--color-brand-charcoal);
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    line-height: 1.15;
-  }
-
+  /*
+   * FIX 2 — Image containment baseline.
+   * Tailwind v4 preflight sets: img { max-width: 100%; height: auto }
+   * The height:auto is correct for content images but breaks any
+   * absolutely-positioned fill image (like carousel slides) that
+   * relies on height:100%. We reset both properties here so every
+   * image starts from a neutral baseline; component-level styles
+   * (e.g. .carousel-img) then apply their own containment rules
+   * without fighting the preflight cascade.
+   */
   img {
-    max-width: 100%;
-    display: block;
+    max-width: 100%;   /* safe default for all content images */
+    height: auto;      /* correct for inline / responsive images */
   }
 }
 
-/* ── Utility: ornamental divider ── */
-@layer utilities {
-  .divider-gold {
-    display: block;
-    width: 4rem;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--color-brand-gold),
-      transparent
-    );
-    margin-inline: auto;
+@layer components {
+  /* High-Impact Hero Title */
+  .hero-title {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    /*
+     * FIX 1 — line-height:0.85 caused glyph collision on
+     * multi-line stacked headings. 1 = line box equals font-size,
+     * the minimum safe value before descenders clip ascenders.
+     */
+    line-height: 1;
+    letter-spacing: -0.04em;
+    @apply text-7xl md:text-9xl lg:text-[11rem];
   }
 
-  .text-balance {
-    text-wrap: balance;
+  .hero-subtitle {
+    @apply text-ivory/90 uppercase tracking-[0.4em] text-xs md:text-sm font-medium mb-4 block;
+  }
+
+  /* Enhanced Gold Shimmer */
+  .gold-shimmer {
+    background: linear-gradient(
+      to right,
+      #B8860B 0%,
+      #F1E5AC 20%,
+      #D4AF37 40%,
+      #F1E5AC 60%,
+      #B8860B 80%,
+      #D4AF37 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 4s linear infinite;
+  }
+
+  @keyframes shine {
+    to { background-position: 200% center; }
+  }
+
+  /* Improved Prominence for Secondary Text */
+  .text-prominent {
+    @apply text-ivory font-medium tracking-widest uppercase;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+
+  /* Luxury Button */
+  .btn-luxe {
+    @apply relative px-10 py-4 overflow-hidden border border-gold text-gold uppercase tracking-[0.3em] text-[10px] transition-all duration-500;
+  }
+  .btn-luxe:hover {
+    @apply bg-gold text-charcoal;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s var(--ease-luxe);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

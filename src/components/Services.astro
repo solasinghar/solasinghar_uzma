@@ -1,0 +1,185 @@
+---
+import { Image } from "astro:assets";
+import bridalImg from "../images/Bridal2.jpg";
+import mehndiBImg from "../images/Henna1.jpg";
+import hairImg from "../images/Makeup.jpg";
+import partyImg from "../images/Partymakeup1.jpg";
+
+const whatsappBase = "https://wa.me/447777399135?text=";
+
+const services = [
+  {
+    name: "Bridal Makeup",
+    tagline: "Signature",
+    urdu: "Dulhan",
+    description:
+      "Hand-blended foundations, dewy skin finishes and editorial eye work — engineered to photograph as beautifully as it feels in person.",
+    image: bridalImg,
+    alt: "Pakistani bride in red and gold lehenga with traditional jewelry",
+    book:
+      whatsappBase +
+      encodeURIComponent("Hi Uzma, I’d like to enquire about the Bridal Makeup package."),
+  },
+  {
+    name: "Mehndi",
+    tagline: "Riwayat",
+    urdu: "Henna",
+    description:
+      "Intricate freehand henna — bold motifs, fine line work and personal initials hidden inside the patterns. Designed for the dholki, mehndi or barat.",
+    image: mehndiBImg,
+    alt: "Detailed bridal mehndi henna patterns on hands",
+    book:
+      whatsappBase +
+      encodeURIComponent("Hi Uzma, I’d like to enquire about Mehndi for an upcoming event."),
+  },
+  {
+    name: "Hair Styling",
+    tagline: "Jura · Curls",
+    urdu: "Sajawat",
+    description:
+      "Sculpted updos, classic curls and flower-set juras anchored to last through the longest baraat — finished with traditional matha-patti placement.",
+    image: hairImg,
+    alt: "Elegant bridal hair styling with traditional accessories",
+    book:
+      whatsappBase +
+      encodeURIComponent("Hi Uzma, I’d like to enquire about Hair Styling."),
+  },
+  {
+    name: "Party Makeup",
+    tagline: "Mehfil",
+    urdu: "Shaam",
+    description:
+      "For the dholki, the engagement, the cocktail. A lighter, lit-from-within finish that still reads from the back of the room — and stays put past midnight.",
+    image: partyImg,
+    alt: "Elegant evening party makeup for South Asian client",
+    book:
+      whatsappBase +
+      encodeURIComponent("Hi Uzma, I’d like to enquire about Party Makeup."),
+  },
+];
+---
+
+<section
+  id="services"
+  class="relative py-24 md:py-32 lg:py-40"
+  style="background-color: var(--color-charcoal); color: var(--color-ivory);"
+>
+  <!-- Top gold ornament -->
+  <div class="absolute top-0 inset-x-0 h-px" style="background: linear-gradient(90deg, transparent, var(--color-gold), transparent);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Section header -->
+    <div class="max-w-3xl mb-16 md:mb-20">
+      <p class="eyebrow mb-6" style="color: var(--color-gold);">
+        The Studio · Services
+      </p>
+      <h2 class="section-heading" style="color: var(--color-ivory);">
+        Four signature rituals,
+        <em style="color: var(--color-gold);">crafted for the modern bride.</em>
+      </h2>
+      <p class="mt-6 text-lg leading-relaxed max-w-2xl" style="color: rgba(250,246,240,0.7); font-weight: 300;">
+        Every service is offered as a private, by-appointment experience at the Rawat studio,
+        with on-location options for the wedding morning and select destination weddings on request.
+      </p>
+    </div>
+
+    <!-- Card grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      {services.map((service, idx) => (
+        <article
+          class="service-card group relative flex flex-col border overflow-hidden"
+          style="background-color: var(--color-charcoal-soft); border-color: rgba(201,168,76,0.18);"
+        >
+          <!-- Image -->
+          <div class="relative aspect-[3/4] overflow-hidden">
+            <Image
+              src={service.image}
+              alt={service.alt}
+              width={1200}
+              height={1600}
+              loading="lazy"
+              decoding="async"
+              class="service-image w-full h-full object-cover"
+              style="filter: brightness(0.85);"
+            />
+            <!-- Bottom fade -->
+            <div class="absolute inset-x-0 bottom-0 h-1/2" style="background: linear-gradient(180deg, transparent, rgba(26,26,26,0.92));"></div>
+
+            <!-- Index numeral -->
+            <div
+              class="absolute top-4 left-4 text-xs tracking-[0.32em] uppercase"
+              style="color: var(--color-gold); font-family: var(--font-body);"
+            >
+              0{idx + 1}
+            </div>
+
+            <!-- Tagline tag -->
+            <div
+              class="absolute top-4 right-4 px-3 py-1 text-[10px] uppercase tracking-[0.28em] backdrop-blur-sm"
+              style="background-color: rgba(123,28,42,0.75); color: var(--color-ivory); border: 1px solid var(--color-gold);"
+            >
+              {service.tagline}
+            </div>
+          </div>
+
+          <!-- Body -->
+          <div class="p-6 lg:p-7 flex flex-col flex-1">
+            <div class="flex items-baseline justify-between mb-4">
+              <h3
+                class="text-2xl lg:text-[1.7rem] font-light leading-tight"
+                style="font-family: var(--font-heading); color: var(--color-ivory);"
+              >
+                {service.name}
+              </h3>
+              <span
+                class="text-xs italic"
+                style="font-family: var(--font-heading); color: var(--color-gold-soft);"
+              >
+                {service.urdu}
+              </span>
+            </div>
+
+            <div class="ornament mb-4 self-start" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="0.8">
+                <circle cx="8" cy="8" r="3"/>
+                <circle cx="8" cy="8" r="6.5"/>
+              </svg>
+            </div>
+
+            <p
+              class="text-sm leading-relaxed flex-1 mb-6"
+              style="color: rgba(250,246,240,0.7);"
+            >
+              {service.description}
+            </p>
+
+            <a
+              href={service.book}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.28em] transition-colors duration-500"
+              style="color: var(--color-gold);"
+              onmouseover="this.style.color='var(--color-ivory)'"
+              onmouseout="this.style.color='var(--color-gold)'"
+              aria-label={`Enquire about ${service.name}`}
+            >
+              Enquire
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="13 6 19 12 13 18"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Closing line -->
+    <p
+      class="mt-16 md:mt-20 text-center text-sm uppercase tracking-[0.32em]"
+      style="color: var(--color-gold-soft);"
+    >
+      Bespoke packages available · Bridal trials by appointment
+    </p>
+  </div>
+</section>

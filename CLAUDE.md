@@ -1,140 +1,126 @@
-# SolaSinghar by Uzma — CLAUDE.md
+## 1. Project Overview
 
-## Project Overview
+**SolaSinghar by Uzma** is a single-page bridal salon website for a high-end Pakistani bridal beauty studio.
 
-**SolaSinghar by Uzma** is a single-page bridal salon website for a high-end Pakistani bridal beauty studio based near Java Road, Rawat, Islamabad.
+| Field | Value |
+|---|---|
+| Owner | Uzma Malik |
+| Location | Near Java Road, Rawat, Islamabad, Pakistan |
+| WhatsApp | +44 7777 399 135 → `https://wa.me/447777399135` |
+| Founded | 2008 |
+| Brides served | 700+ |
+| Award | Winner — All Pakistan Bridal Competition (2010), presented by the **First Lady of Pakistan** |
 
-- **Owner:** Uzma Malik
-- **Location:** Near Java Road, Rawat, Islamabad, Pakistan
-- **WhatsApp:** +44 7777399135
-- **Founded:** 2008
-- **Brides Served:** 700+
-- **Award:** Winner — All Pakistan Bridal Competition (2010), award presented by the First Lady of Pakistan
+### Services (in order of prominence)
+1. Bridal Makeup *(signature)*
+2. Mehndi (henna)
+3. Hair Styling
+4. Party Makeup
 
-### Services
-- Bridal makeup (signature specialty)
-- Mehndi (henna)
-- Hair styling
-- Party makeup
-
-### Brand Identity
-The aesthetic is **high-end, elegant, and rooted in Pakistani bridal culture** — think deep jewel tones (burgundy, gold, emerald), ornate patterns, and a luxurious editorial feel. Every design decision should evoke the richness of desi bridal tradition while remaining modern and aspirational.
+### Brand identity
+High-end, editorial, rooted in Pakistani bridal culture — deep jewel tones (burgundy, gold), ornate but disciplined. The vibe is **modern luxury × *Riwayat*** (tradition). Every design decision should evoke desi bridal richness while staying modern and aspirational.
 
 ---
 
-## Tech Stack
+## 2. Tech Stack (locked)
 
 | Tool | Version | Notes |
-|------|---------|-------|
+|---|---|---|
 | Astro | ^6.1.5 | Single-page (`src/pages/index.astro`) |
-| Tailwind CSS | ^4.2.2 | Vite plugin (`@tailwindcss/vite`); CSS-first config — no `tailwind.config.js` |
-| Node | >=22.12.0 | |
+| Tailwind CSS | ^4.2.2 | Vite plugin (`@tailwindcss/vite`) — **CSS-first, no `tailwind.config.js`** |
+| Node | ≥22.12.0 | |
+| Sharp | ^0.33.5 | For Astro `<Image>` optimization |
+| TypeScript | ^5.6.3 | Strict mode (extends `astro/tsconfigs/strict`) |
+| @astrojs/check | ^0.9.4 | Used in `npm run build` |
 
-**Tailwind v4 note:** Configuration lives in CSS via `@import "tailwindcss"` and `@theme` blocks — do **not** create a `tailwind.config.js`. Custom tokens (colours, fonts) go in the `@theme` layer inside a `.css` file imported into `index.astro`.
+**Tailwind v4 rule:** all design tokens live in `src/styles/global.css` inside `@theme {}` blocks. **Do not** create `tailwind.config.js`. Use utility classes (e.g., `text-gold`, `bg-burgundy`) instead of hardcoded `style` variables to ensure responsive compatibility and JIT engine support.
 
 ---
 
-## Project Structure
+## 3. Project Structure
 
 ```
-src/
-  pages/
-    index.astro        ← entire single-page site lives here
-  styles/              ← global CSS (Tailwind imports + @theme tokens)
-public/
-  favicon.svg
-  favicon.ico
-  images/              ← downloaded/optimised placeholder images (if any)
-```
-
-All website content is on a single scrollable page (`index.astro`). Break the page into Astro components under `src/components/` as sections grow — e.g. `Hero.astro`, `Services.astro`, `Gallery.astro`, `Testimonials.astro`, `Contact.astro`.
-
----
-
-## Page Sections (target layout)
-
-1. **Navbar** — logo/wordmark, anchor links, WhatsApp CTA button
-2. **Hero** — full-viewport, cinematic image, tagline, booking CTA
-3. **About** — Uzma's story, 2008 founding, 700+ brides, award highlight
-4. **Services** — Bridal Makeup · Mehndi · Hair · Party Makeup (card grid)
-5. **Gallery** — masonry or grid of bridal photos (Unsplash placeholders)
-6. **Testimonials** — bride quotes / reviews carousel or grid
-7. **Award / Trust Badge** — All Pakistan Bridal Competition 2010, First Lady of Pakistan
-8. **Contact / Booking** — WhatsApp link, address (near Java Road Rawat, Islamabad), inquiry form (static or Netlify Forms)
-9. **Footer** — logo, nav links, social links, copyright
-
----
-
-## Design Tokens (suggested, override in `@theme`)
-
-```css
-@theme {
-  --color-brand-gold:    #C9A84C;
-  --color-brand-burgundy: #7B1C2A;
-  --color-brand-blush:   #F2DDD5;
-  --color-brand-ivory:   #FAF6F0;
-  --color-brand-charcoal: #1A1A1A;
-
-  --font-heading: 'Cormorant Garamond', serif;  /* elegant editorial serif */
-  --font-body:    'DM Sans', sans-serif;
-}
-```
-
-Load fonts via a `<link>` in the `<head>` of `index.astro` (Google Fonts or Bunny Fonts).
-
----
-
-## Images
-
-Use **Unsplash** placeholder images until real photos are provided. Use descriptive search terms like:
-- `Pakistani bridal makeup`
-- `bridal mehndi henna`
-- `bridal hair styling`
-- `South Asian wedding`
-
-Prefer `https://images.unsplash.com/photo-<id>?w=1200&q=80` URLs directly in `<img>` or Astro `<Image>` tags. Replace with real photography when available.
-
----
-
-## Content & Copy Guidelines
-
-- **Language:** English (with occasional Urdu words for warmth — e.g. "Dil se", "Shaan", "Riwayat")
-- **Tone:** Warm, confident, aspirational. Speaks to brides and their families.
-- **Key messages to weave in:**
-  - "Trusted by 700+ brides since 2008"
-  - "Award-winning artistry — All Pakistan Bridal Competition 2010"
-  - "Your wedding day deserves nothing less than perfection"
-  - Award presented by the First Lady of Pakistan (a strong credibility signal — always include)
-
----
-
-## WhatsApp CTA
-
-All booking CTAs should open WhatsApp directly:
-
-```html
-<a href="https://wa.me/447777399135?text=Hi%20Uzma%2C%20I%27d%20like%20to%20book%20a%20bridal%20consultation">
-  Book via WhatsApp
-</a>
+E:\Solasinghar\
+├── astro.config.mjs            # Tailwind v4 Vite plugin
+├── package.json                # Astro 6.1.5, Tailwind 4.2.2, Sharp, TS check
+├── tsconfig.json               # extends astro/tsconfigs/strict
+├── public/
+│   ├── favicon.svg             # burgundy + gold mehndi-inspired star
+│   └── robots.txt              # allow all + sitemap pointer
+└── src/
+    ├── images/
+    │               # Local bridal archive (Replaces Unsplash)
+    ├── pages/
+    │   └── index.astro         # composes all sections + full SEO meta + JSON-LD
+    ├── styles/
+    │   └── global.css          # @theme tokens + base layer + component utilities
+    └── components/
+        ├── Navbar.astro        # Updated: backdrop-blur-md + bg-ivory/10 transparency
+        ├── Hero.astro          # Updated: Local imports + Scrim gradient logic
+        ├── About.astro         # legacy story · stat strip · signature
+        ├── Services.astro      # 4-card grid: bridal · mehndi · hair · party
+        ├── Award.astro         # First Lady's award + 700+ brides social proof
+        ├── Gallery.astro       # editorial photo grid (Astro Image)
+        ├── Testimonials.astro  # bride quote cards
+        ├── Contact.astro       # WhatsApp · address · Google Maps embed
+        └── Footer.astro        # brand · nav · socials · copyright
 ```
 
 ---
 
-## Commands
+## 4. Design System & Visual Fixes
 
-```bash
-npm run dev      # start dev server (localhost:4321)
-npm run build    # production build → dist/
-npm run preview  # preview production build
-```
+### 4.1 Palette (declared in `@theme {}` in `src/styles/global.css`)
+
+| Token | Hex | Use |
+|---|---|---|
+| `--color-burgundy` | `#7B1C2A` | Primary brand, headings accent, CTAs |
+| `--color-gold` | `#C9A84C` | Secondary brand, ornaments, dividers |
+| `--color-ivory` | `#FAF6F0` | Page background, light text on dark |
+| `--color-charcoal` | `#1A1A1A` | Body text, dark sections |
+
+### 4.2 Hero & Nav Visual Corrections
+* **The Scrim:** Replaced global dark image overlays with a CSS scrim: `linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 60%)`. This ensures text legibility on the left while keeping the bride's face clear, bright, and detailed on the right.
+* **Nav Transparency:** The Navbar uses `backdrop-blur-md` and `bg-ivory/10` when positioned over the Hero to eliminate the harsh horizontal "cutoff" line and blend seamlessly with the editorial background.
+* **Typography Contrast:** Added `drop-shadow-sm` and verified weights (300/400) for white serif headings to ensure they remain crisp against intricate bridal embroidery textures.
 
 ---
 
-## Coding Conventions
+## 5. Imagery & Asset Pipeline
 
-- Use Astro components (`.astro`) for each page section — keeps `index.astro` clean.
-- Tailwind utility classes only; no separate component CSS unless truly necessary.
-- Responsive-first: mobile → tablet → desktop breakpoints.
-- Prefer Astro's built-in `<Image>` component for optimised images where possible.
-- No JavaScript frameworks (no React/Vue) unless a specific interactive feature requires it — keep the bundle lean.
-- Animations: subtle CSS transitions or `@keyframes` only. Avoid heavy JS animation libraries.
+- **Source:** All placeholders and Unsplash URLs are replaced by real photography from Uzma's archive stored in `src/assets/images/`.
+- **Implementation:** Images are **imported** in component frontmatter to allow Astro's `<Image>` component to perform local optimization (Sharp).
+- **Hero Carousel:** A 3-slide CSS `@keyframes` crossfade cycle (15s total). Slide 1 is set to `loading="eager"` and `decoding="sync"` for optimal LCP.
+
+---
+
+## 6. Content & Tone
+
+### Tone
+Warm, confident, aspirational. English with occasional Urdu words for authenticity (*Riwayat, Dulhan, Mehndi, Shaan*).
+
+### Trust signals
+- *"Trusted by 700+ brides since 2008"*
+- *"Award-winning artistry — All Pakistan Bridal Competition 2010"*
+- *"Award presented by the First Lady of Pakistan"*
+
+---
+
+## 7. WhatsApp Integration
+
+**Single canonical number:** `+44 7777 399 135` → URL `https://wa.me/447777399135`.
+Prefills contextual messages per CTA (e.g., *"Hi Uzma, I'd like to book a bridal consultation"* or service-specific enquiries).
+
+---
+
+## 8. SEO & Local Targeting
+
+- **Primary Target:** "Best Bridal Makeup in Rawat & Islamabad".
+- **Schema.org:** JSON-LD `BeautySalon` data including the Rawat address and the First Lady award.
+- **Geo-Tags:** Metadata for Rawat, Islamabad, and Rawalpindi regions.
+
+---
+
+
+
+*This file is the single source of truth for the SolaSinghar build. Update it whenever architectural decisions change.*

@@ -1,0 +1,12 @@
+# SolaSinghar by Uzma - Robots configuration
+# Allow all crawlers for SEO
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://solasinghar.com/sitemap-index.xml
+
+# Crawl delay (optional - allows servers to breathe)
+Crawl-delay: 1
+Request-rate: 1/1s

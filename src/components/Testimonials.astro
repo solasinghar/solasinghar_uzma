@@ -1,0 +1,94 @@
+---
+const testimonials = [
+  {
+    quote:
+      "Uzma baji turned my wedding morning into the calmest, most beautiful three hours of the entire shaadi. My mother cried when she saw me — and the makeup didn't move from nikkah to rukhsati.",
+    name: "Hira A.",
+    event: "Bride · Islamabad · 2024",
+  },
+  {
+    quote:
+      "I had my engagement, mehndi and barat all done at SolaSinghar. Three different looks, three different moods, all unmistakably me. There's a reason families in Rawat keep coming back.",
+    name: "Fatima R.",
+    event: "Bride · Rawat · 2023",
+  },
+  {
+    quote:
+      "Booked SolaSinghar for both my sisters and now for myself. The mehndi designs are unmatched in Islamabad — and Uzma actually listens to what the bride wants.",
+    name: "Sana M.",
+    event: "Bride · Bahria Town · 2024",
+  },
+];
+---
+
+<section
+  id="testimonials"
+  class="relative py-24 md:py-32 lg:py-40"
+  style="background-color: var(--color-ivory-warm);"
+>
+  <!-- Top ornament -->
+  <div class="flex justify-center mb-12">
+    <svg width="60" height="20" viewBox="0 0 60 20" fill="none" stroke="var(--color-gold)" stroke-width="0.8" aria-hidden="true">
+      <line x1="0" y1="10" x2="22" y2="10"/>
+      <circle cx="30" cy="10" r="4"/>
+      <circle cx="30" cy="10" r="1.5" fill="var(--color-gold)"/>
+      <line x1="38" y1="10" x2="60" y2="10"/>
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Heading -->
+    <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+      <p class="eyebrow mb-6" style="color: var(--color-burgundy);">
+        Bride Stories
+      </p>
+      <h2 class="section-heading" style="color: var(--color-charcoal);">
+        In the words of <em>our brides.</em>
+      </h2>
+    </div>
+
+    <!-- Quote grid -->
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      {testimonials.map((t) => (
+        <figure
+          class="relative p-8 md:p-10 border flex flex-col h-full transition-all duration-500 hover:shadow-[0_30px_60px_-20px_rgba(123,28,42,0.18)]"
+          style="background-color: var(--color-ivory); border-color: rgba(201,168,76,0.4);"
+        >
+          <!-- Decorative quote glyph -->
+          <div
+            class="absolute top-4 right-6 text-7xl leading-none opacity-25"
+            style="font-family: var(--font-heading); color: var(--color-burgundy);"
+            aria-hidden="true"
+          >
+            &ldquo;
+          </div>
+
+          <!-- Star row -->
+          <div class="flex gap-1 mb-6 relative z-10" aria-label="5 out of 5 stars">
+            {Array.from({ length: 5 }).map(() => (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--color-gold)" aria-hidden="true">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            ))}
+          </div>
+
+          <blockquote
+            class="text-base md:text-[1.05rem] leading-relaxed flex-1 relative z-10"
+            style="font-family: var(--font-heading); color: var(--color-charcoal); font-style: italic; font-weight: 400;"
+          >
+            &ldquo;{t.quote}&rdquo;
+          </blockquote>
+
+          <figcaption class="mt-8 pt-6 border-t" style="border-color: rgba(201,168,76,0.4);">
+            <div class="text-sm font-medium" style="color: var(--color-burgundy); letter-spacing: 0.06em;">
+              {t.name}
+            </div>
+            <div class="text-[11px] uppercase tracking-[0.28em] mt-1" style="color: var(--color-charcoal-soft);">
+              {t.event}
+            </div>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

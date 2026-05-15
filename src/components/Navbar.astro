@@ -1,0 +1,176 @@
+---
+const whatsappUrl = "https://wa.me/447777399135?text=Hi%20Uzma%2C%20I%27d%20like%20to%20book%20a%20bridal%20consultation";
+
+const navLinks = [
+  { href: "#about",     label: "About" },
+  { href: "#services",  label: "Services" },
+  { href: "#gallery",   label: "Gallery" },
+  { href: "#award",     label: "Recognition" },
+  { href: "#contact",   label: "Contact" },
+];
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-out"
+  data-header
+>
+  <div class="absolute inset-0 backdrop-blur-md transition-all duration-500 ease-out" data-header-bg style="background-color: rgba(15, 15, 15, 0.15);"></div>
+
+  <nav class="relative max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between py-6 lg:py-8">
+    <!-- Wordmark -->
+    <a href="#hero" class="group flex flex-col leading-none">
+      <span
+        class="text-2xl lg:text-3xl font-light tracking-[0.18em] uppercase transition-colors duration-500"
+        style="font-family: var(--font-heading); color: var(--color-ivory);"
+        data-logo
+      >
+        Sola<span style="color: var(--color-gold);">Singhar</span>
+      </span>
+      <span
+        class="text-[10px] tracking-[0.4em] uppercase mt-1 transition-colors duration-500 opacity-80"
+        style="color: var(--color-gold-soft);"
+        data-logo-sub
+      >
+        by Uzma · Est. 2008
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden lg:flex items-center gap-10 text-sm tracking-[0.18em] uppercase">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="nav-link transition-colors duration-500"
+            style="color: var(--color-ivory);"
+            data-nav-link
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA -->
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-[0.22em] font-medium transition-all duration-500"
+      style="background-color: var(--color-gold); color: var(--color-charcoal); border: 1px solid var(--color-gold);"
+      onmouseover="this.style.backgroundColor='transparent'; this.style.color='var(--color-gold)';"
+      onmouseout="this.style.backgroundColor='var(--color-gold)'; this.style.color='var(--color-charcoal)';"
+      aria-label="Book via WhatsApp"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+      </svg>
+      Book Now
+    </a>
+
+    <!-- Mobile menu toggle -->
+    <button
+      id="mobile-toggle"
+      class="lg:hidden p-2 transition-colors duration-500"
+      style="color: var(--color-ivory);"
+      aria-label="Open menu"
+      data-mobile-toggle
+    >
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="3" y1="7"  x2="21" y2="7"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="17" x2="21" y2="17"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu panel -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden hidden border-t"
+    style="background-color: var(--color-ivory); border-color: rgba(201,168,76,0.3);"
+  >
+    <ul class="px-6 py-8 space-y-5 text-sm uppercase tracking-[0.22em]">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="block py-2 transition-colors duration-500 hover:text-[var(--color-burgundy)]"
+            style="color: var(--color-charcoal);"
+            data-mobile-link
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="pt-4">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary w-full justify-center"
+        >
+          <span>Book via WhatsApp</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script is:inline>
+  // Scroll-aware header — switches palette when user scrolls past hero
+  (() => {
+    const header   = document.querySelector('[data-header]');
+    const headerBg = document.querySelector('[data-header-bg]');
+    const logo     = document.querySelector('[data-logo]');
+    const logoSub  = document.querySelector('[data-logo-sub]');
+    const navLinks = document.querySelectorAll('[data-nav-link]');
+    const toggle   = document.querySelector('[data-mobile-toggle]');
+
+    const setScrolled = (scrolled) => {
+      if (!header || !headerBg) return;
+      if (scrolled) {
+        headerBg.style.backgroundColor = 'rgba(250, 246, 240, 0.92)';
+        headerBg.style.backdropFilter  = 'blur(12px)';
+        headerBg.style.boxShadow       = '0 1px 0 rgba(201, 168, 76, 0.25)';
+        if (logo)    logo.style.color = 'var(--color-charcoal)';
+        if (logoSub) logoSub.style.color = 'var(--color-burgundy)';
+        navLinks.forEach((l) => (l.style.color = 'var(--color-charcoal)'));
+        if (toggle)  toggle.style.color = 'var(--color-charcoal)';
+      } else {
+        headerBg.style.backgroundColor = 'rgba(15, 15, 15, 0.12)';  /* subtle transparent dark for navbar blending */
+        headerBg.style.backdropFilter  = 'blur(10px)';              /* maintain backdrop blur for editorial feel */
+        headerBg.style.boxShadow       = 'none';
+        if (logo)    logo.style.color = 'var(--color-ivory)';
+        if (logoSub) logoSub.style.color = 'var(--color-gold-soft)';
+        navLinks.forEach((l) => (l.style.color = 'var(--color-ivory)'));
+        if (toggle)  toggle.style.color = 'var(--color-ivory)';
+      }
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 60);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Mobile menu
+    const menu = document.getElementById('mobile-menu');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    if (menu && mobileToggle) {
+      mobileToggle.addEventListener('click', () => menu.classList.toggle('hidden'));
+      document.querySelectorAll('[data-mobile-link]').forEach((l) =>
+        l.addEventListener('click', () => menu.classList.add('hidden'))
+      );
+    }
+  })();
+</script>

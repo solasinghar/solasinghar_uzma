@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+import bride4Img from "../images/Bride4.jpg";
+import coupleImg from "../images/couple.jpg";
+import bridalImg from "../images/Bridal2.jpg";
+import partyImg from "../images/partymakeup.jpg";
+import parlorImg from "../images/parlor-enhanced.jpg";
+
+// Editorial bridal gallery — Pakistani / South Asian wedding aesthetic
+const photos = [
+  {
+    src: bride4Img,
+    alt: "Bride in red bridal lehenga with intricate gold jewelry",
+    label: "Dulhan",
+    span: "lg:col-span-2 lg:row-span-2 aspect-[4/5]",
+  },
+  {
+    src: coupleImg,
+    alt: "Bride with beloved during celebration",
+    label: "Moments",
+    span: "aspect-square",
+  },
+  {
+    src: bridalImg,
+    alt: "Detail of bridal artistry and makeup",
+    label: "Artistry",
+    span: "aspect-square",
+  },
+  {
+    src: partyImg,
+    alt: "Evening party makeup and elegance",
+    label: "Mehfil",
+    span: "aspect-[4/5]",
+  },
+  {
+    src: parlorImg,
+    alt: "SolaSinghar studio in Rawat, Islamabad",
+    label: "Studio",
+    span: "lg:col-span-2 aspect-[16/10]",
+  },
+];
+---
+
+<section
+  id="gallery"
+  class="relative py-24 md:py-32 lg:py-40"
+  style="background-color: var(--color-ivory);"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14 md:mb-20">
+      <div class="max-w-2xl">
+        <p class="eyebrow mb-6" style="color: var(--color-burgundy);">
+          The Portfolio · Shaan
+        </p>
+        <h2 class="section-heading" style="color: var(--color-charcoal);">
+          A diary of <em>unforgettable</em> wedding mornings.
+        </h2>
+      </div>
+      <p class="md:max-w-md text-base md:text-lg leading-relaxed" style="color: rgba(26,26,26,0.7);">
+        Every bride brings her own story to the chair. These frames are a small selection from
+        seventeen years of Rawat &amp; Islamabad weddings — barat mornings, mehndi nights,
+        walima receptions, and quiet rukhsati moments.
+      </p>
+    </div>
+
+    <!-- Editorial grid (CSS grid masonry-style) -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+      {photos.map((photo) => (
+        <figure class={`gallery-item relative group ${photo.span}`}>
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 w-full h-full object-cover"
+          />
+          <figcaption
+            class="absolute left-4 bottom-4 text-xs uppercase tracking-[0.32em] z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style="color: var(--color-ivory);"
+          >
+            <span class="inline-block px-3 py-1.5 backdrop-blur-sm border" style="background-color: rgba(123,28,42,0.6); border-color: var(--color-gold);">
+              {photo.label}
+            </span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <!-- Footnote -->
+    <div class="mt-14 md:mt-20 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.32em]" style="color: var(--color-charcoal-soft);">
+      <span class="h-px w-12" style="background: var(--color-gold);"></span>
+      Full portfolio shared during private consultation
+      <span class="h-px w-12" style="background: var(--color-gold);"></span>
+    </div>
+  </div>
+</section>
