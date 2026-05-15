@@ -1,99 +1,271 @@
 ---
 import { Image } from "astro:assets";
-import bride4Img from "../images/Bride4.jpg";
-import coupleImg from "../images/couple.jpg";
-import bridalImg from "../images/Bridal2.jpg";
-import partyImg from "../images/partymakeup.jpg";
-import parlorImg from "../images/parlor-enhanced.jpg";
+import g3  from "../images/gallery-3.jpg";
+import g8  from "../images/gallery-8.jpg";
+import g4  from "../images/gallery-4.jpg";
+import g5  from "../images/gallery-5.jpg";
+import g6  from "../images/gallery-6.jpg";
+import g11 from "../images/gallery-11.jpg";
+import g2  from "../images/gallery-2.jpg";
+import g10 from "../images/gallery-10.jpg";
+import g12 from "../images/gallery-12.jpg";
 
-// Editorial bridal gallery — Pakistani / South Asian wedding aesthetic
 const photos = [
-  {
-    src: bride4Img,
-    alt: "Bride in red bridal lehenga with intricate gold jewelry",
-    label: "Dulhan",
-    span: "lg:col-span-2 lg:row-span-2 aspect-[4/5]",
-  },
-  {
-    src: coupleImg,
-    alt: "Bride with beloved during celebration",
-    label: "Moments",
-    span: "aspect-square",
-  },
-  {
-    src: bridalImg,
-    alt: "Detail of bridal artistry and makeup",
-    label: "Artistry",
-    span: "aspect-square",
-  },
-  {
-    src: partyImg,
-    alt: "Evening party makeup and elegance",
-    label: "Mehfil",
-    span: "aspect-[4/5]",
-  },
-  {
-    src: parlorImg,
-    alt: "SolaSinghar studio in Rawat, Islamabad",
-    label: "Studio",
-    span: "lg:col-span-2 aspect-[16/10]",
-  },
+  { src: g3,  alt: "Pakistani bride in red and gold lehenga against sunset sky",          label: "Dulhan",    wide: false },
+  { src: g2,  alt: "Editorial bridal makeup — hands-in-hair pose, cream embroidered outfit", label: "Artistry",  wide: false },
+  { src: g11, alt: "Bridal close-up — teal eye makeup with dusty rose lehenga",           label: "Editorial", wide: false },
+  { src: g8,  alt: "Full traditional bridal look with maroon lehenga and red roses",      label: "Barat",     wide: false },
+  { src: g4,  alt: "Classic Pakistani bridal portrait — maang tikka, nose ring, mehndi", label: "Riwayat",   wide: false },
+  { src: g5,  alt: "Bridal beauty — red lehenga with full gold jewellery set",            label: "Sajawat",   wide: false },
+  { src: g6,  alt: "Bridal hair styling — red roses in updo, back-angle portrait",        label: "Haar",      wide: false },
+  { src: g10, alt: "Mehndi ceremony look — green dupatta with yellow flower jewellery",   label: "Mehndi",    wide: false },
+  { src: g12, alt: "Outdoor bridal portrait — silver lehenga at dusk venue with lights", label: "Shaam",     wide: true  },
 ];
 ---
 
-<section
-  id="gallery"
-  class="relative py-24 md:py-32 lg:py-40"
-  style="background-color: #EAE0C8;"
->
+<section id="gallery" class="gal-section">
+
   <!-- Top gold border -->
-  <div class="absolute top-0 inset-x-0 h-px" style="background: linear-gradient(90deg, transparent, #D4AF37, transparent); opacity: 0.45;" aria-hidden="true"></div>
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+  <div class="gal-border-top" aria-hidden="true"></div>
+
+  <div class="gal-inner">
+
     <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-14 md:mb-20">
-      <div class="max-w-2xl">
-        <p class="eyebrow mb-6" style="color: #7B1C2A;">
-          The Portfolio · Shaan
-        </p>
-        <h2 class="section-heading" style="color: #120A0D;">
-          A diary of <em>unforgettable</em> wedding mornings.
+    <div class="gal-header">
+      <div>
+        <p class="gal-eyebrow">The Portfolio · Shaan</p>
+        <h2 class="gal-heading">
+          A diary of <em class="gal-heading-em">unforgettable</em> wedding mornings.
         </h2>
       </div>
-      <p class="md:max-w-md text-base md:text-lg leading-relaxed" style="color: rgba(18,10,13,0.6);">
-        Every bride brings her own story to the chair. These frames are a small selection from
-        seventeen years of Rawat &amp; Islamabad weddings — barat mornings, mehndi nights,
+      <p class="gal-subtext">
+        Every bride brings her own story to the chair. These frames are a small selection
+        from seventeen years of Rawat &amp; Islamabad weddings — barat mornings, mehndi nights,
         walima receptions, and quiet rukhsati moments.
       </p>
     </div>
 
-    <!-- Editorial grid (CSS grid masonry-style) -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+    <!-- Grid -->
+    <div class="gal-grid">
       {photos.map((photo) => (
-        <figure class={`gallery-item relative group ${photo.span}`}>
+        <figure class={`gal-item group${photo.wide ? " gal-wide" : ""}`}>
           <Image
             src={photo.src}
             alt={photo.alt}
             loading="lazy"
             decoding="async"
-            class="absolute inset-0 w-full h-full object-cover"
+            class="gal-img"
           />
-          <figcaption
-            class="absolute left-4 bottom-4 text-xs uppercase tracking-[0.32em] z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style="color: var(--color-ivory);"
-          >
-            <span class="inline-block px-3 py-1.5 backdrop-blur-sm border" style="background-color: rgba(123,28,42,0.6); border-color: var(--color-gold);">
-              {photo.label}
-            </span>
+          <!-- Hover overlay -->
+          <div class="gal-overlay" aria-hidden="true"></div>
+          <figcaption class="gal-caption">
+            <span class="gal-label">{photo.label}</span>
           </figcaption>
         </figure>
       ))}
     </div>
 
-    <!-- Footnote -->
-    <div class="mt-14 md:mt-20 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.32em]" style="color: var(--color-charcoal-soft);">
-      <span class="h-px w-12" style="background: #D4AF37;"></span>
-      <span style="color: rgba(18,10,13,0.5);">Full portfolio shared during private consultation</span>
-      <span class="h-px w-12" style="background: #D4AF37;"></span>
+    <!-- Footer note -->
+    <div class="gal-footnote">
+      <span class="gal-rule" aria-hidden="true"></span>
+      Full portfolio shared during private consultation
+      <span class="gal-rule" aria-hidden="true"></span>
     </div>
+
   </div>
+
 </section>
+
+
+<style>
+/* ─────────────────────────────────────────
+   SECTION
+   ───────────────────────────────────────── */
+.gal-section {
+  position: relative;
+  background: #EAE0C8;
+  padding: 6rem 0 5rem;
+}
+.gal-border-top {
+  position: absolute;
+  top: 0; inset-x: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  opacity: 0.45;
+}
+.gal-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+@media (min-width: 1024px) { .gal-inner { padding: 0 3rem; } }
+
+/* ─────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────── */
+.gal-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+@media (min-width: 768px) {
+  .gal-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+  }
+}
+.gal-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(.58rem, .9vw, .68rem);
+  font-weight: 500;
+  letter-spacing: .38em;
+  text-transform: uppercase;
+  color: #7B1C2A;
+  margin-bottom: 1rem;
+}
+.gal-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 300;
+  color: #120A0D;
+  line-height: 1.2;
+  max-width: 480px;
+}
+.gal-heading-em { font-style: italic; color: #7B1C2A; }
+.gal-subtext {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(.8rem, 1.1vw, .92rem);
+  font-weight: 300;
+  line-height: 1.85;
+  color: rgba(18,10,13,0.58);
+  max-width: 420px;
+  flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────
+   GRID
+   ───────────────────────────────────────── */
+.gal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+@media (min-width: 768px) {
+  .gal-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   ITEMS
+   ───────────────────────────────────────── */
+.gal-item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  cursor: pointer;
+}
+
+/* Wide item (gallery-12 landscape) */
+.gal-wide {
+  aspect-ratio: 16 / 9;
+  grid-column: span 2;
+}
+@media (min-width: 768px) {
+  .gal-wide {
+    grid-column: span 3;
+    aspect-ratio: 21 / 8;
+  }
+}
+
+.gal-img {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover;
+  transition: transform .9s cubic-bezier(.19,1,.22,1), filter .6s ease;
+  filter: brightness(0.92) saturate(0.92);
+}
+.gal-item:hover .gal-img {
+  transform: scale(1.06);
+  filter: brightness(1) saturate(1.05);
+}
+
+/* Dark overlay on hover */
+.gal-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(13,10,7,.72) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity .5s ease;
+  pointer-events: none;
+}
+.gal-item:hover .gal-overlay { opacity: 1; }
+
+/* Caption */
+.gal-caption {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.gal-item:hover .gal-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gal-label {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .52rem;
+  font-weight: 500;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: #FAF6F0;
+  background: rgba(123,28,42,0.7);
+  border: 1px solid rgba(212,175,55,0.5);
+  padding: .3rem .7rem;
+  backdrop-filter: blur(4px);
+}
+
+/* ─────────────────────────────────────────
+   FOOTER NOTE
+   ───────────────────────────────────────── */
+.gal-footnote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: rgba(18,10,13,0.45);
+}
+.gal-rule {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: #D4AF37;
+  opacity: 0.5;
+}
+
+/* ─────────────────────────────────────────
+   MOBILE
+   ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  .gal-section { padding: 4rem 0 3.5rem; }
+  .gal-grid { gap: 8px; }
+  .gal-wide { aspect-ratio: 16/9; }
+}
+</style>
