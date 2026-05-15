@@ -15,7 +15,7 @@ const navLinks = [
   class="fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-out"
   data-header
 >
-  <div class="absolute inset-0 transition-all duration-500 ease-out" data-header-bg style="background-color: rgba(6, 4, 2, 0.55); backdrop-filter: blur(6px);"></div>
+  <div class="absolute inset-0 transition-all duration-500 ease-out" data-header-bg style="background-color: rgba(6, 4, 2, 0.72); backdrop-filter: blur(8px);"></div>
 
   <nav class="relative max-w-7xl mx-auto px-5 lg:px-12 flex items-center justify-between py-4 lg:py-8">
     <!-- Wordmark -->
@@ -139,8 +139,8 @@ const navLinks = [
         navLinks.forEach((l) => (l.style.color = 'var(--color-charcoal)'));
         if (toggle)  toggle.style.color = 'var(--color-charcoal)';
       } else {
-        headerBg.style.backgroundColor = 'rgba(15, 15, 15, 0.12)';  /* subtle transparent dark for navbar blending */
-        headerBg.style.backdropFilter  = 'blur(10px)';              /* maintain backdrop blur for editorial feel */
+        headerBg.style.backgroundColor = 'rgba(6, 4, 2, 0.72)';
+        headerBg.style.backdropFilter  = 'blur(8px)';
         headerBg.style.boxShadow       = 'none';
         if (logo)    logo.style.color = 'var(--color-ivory)';
         if (logoSub) logoSub.style.color = 'var(--color-gold-soft)';
