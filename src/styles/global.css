@@ -5,12 +5,19 @@
   --color-burgundy:        #7B1C2A;
   --color-burgundy-deep:   #4A0E18;
   --color-burgundy-light:  #A32638;
+
+  /* Gold & Champagne accent palette */
   --color-gold:            #D4AF37; /* Brighter metallic gold */
-  --color-gold-soft:       #F1E5AC;
-  --color-gold-deep:       #B8860B;
+  --color-gold-soft:       #F1E5AC; /* Warm champagne */
+  --color-gold-deep:       #B8860B; /* Deep antique gold */
+  --color-gold-warm:       #E8D4A8; /* Warm champagne highlight */
+  --color-champagne:       #F5E6D3; /* Soft champagne undertone */
+  --color-rose-gold:       #D4A574; /* Rose-gold accent */
+
   --color-ivory:           #FAF6F0;
   --color-ivory-warm:      #FFFBF5;
   --color-charcoal:        #0F0F0F; /* Darker for better gold contrast */
+  --color-charcoal-soft:   #4A4A4A; /* Medium charcoal for secondary text */
 
   /* Typography */
   --font-heading: 'Cormorant Garamond', serif;
@@ -109,5 +116,19 @@
   .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Warm accent utilities */
+  .accent-gold { color: var(--color-gold); }
+  .accent-champagne { color: var(--color-champagne); }
+  .accent-rose-gold { color: var(--color-rose-gold); }
+  .bg-gold-overlay { background-color: rgba(212, 175, 55, 0.06); }
+  .border-gold-soft { border-color: rgba(212, 175, 55, 0.25); }
+
+  /* Text hierarchy with warm accents */
+  .text-gold-emphasis {
+    color: var(--color-gold);
+    font-weight: 600;
+    letter-spacing: 0.05em;
   }
 }

@@ -2,21 +2,27 @@
 const testimonials = [
   {
     quote:
-      "Uzma baji turned my wedding morning into the calmest, most beautiful three hours of the entire shaadi. My mother cried when she saw me — and the makeup didn't move from nikkah to rukhsati.",
-    name: "Hira A.",
-    event: "Bride · Islamabad · 2024",
-  },
-  {
-    quote:
-      "I had my engagement, mehndi and barat all done at SolaSinghar. Three different looks, three different moods, all unmistakably me. There's a reason families in Rawat keep coming back.",
-    name: "Fatima R.",
-    event: "Bride · Rawat · 2023",
-  },
-  {
-    quote:
-      "Booked SolaSinghar for both my sisters and now for myself. The mehndi designs are unmatched in Islamabad — and Uzma actually listens to what the bride wants.",
-    name: "Sana M.",
+      "I was so nervous about my wedding day, but Uzma's studio was like a sanctuary. She understood exactly what I wanted for my mehndi look — gold and burgundy, with intricate henna patterns that matched my wedding jewellery perfectly. Her team kept me calm, laughed with me, and made me feel like a bride should feel — absolutely radiant.",
+    name: "Amna K.",
     event: "Bride · Bahria Town · 2024",
+  },
+  {
+    quote:
+      "My sister got married through SolaSinghar three years ago, so when it came time for my wedding, there was no question. Uzma delivered the same flawless bridal makeup I'd seen on my sister, and added her signature burgundy-gold extension work. My photos are absolutely magazine-ready. She's the only one I'd trust with my big day.",
+    name: "Zara Q.",
+    event: "Bride · Police Colony · 2024",
+  },
+  {
+    quote:
+      "Everyone at my reception kept asking who did my mehndi — the designs were so intricate and the gold accents just glowed under the studio lights at my walima. Uzma has this gift of understanding desi bridal traditions while making everything feel modern and editorial. I've already recommended her to six of my cousins in Rawalpindi.",
+    name: "Mahnoor H.",
+    event: "Bride · Kallay Syedan · 2023",
+  },
+  {
+    quote:
+      "For my engagement in Haraka, I booked Uzma for makeup and hair, and she created two completely different, equally stunning looks. The consistency and artistry across both occasions was unmatched. She's not just a makeup artist — she's a storyteller who makes every bride feel like the star of her own film.",
+    name: "Nida M.",
+    event: "Bride · Haraka · 2024",
   },
 ];
 ---
@@ -51,7 +57,7 @@ const testimonials = [
     </div>
 
     <!-- Quote grid -->
-    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
       {testimonials.map((t) => (
         <figure
           class="relative p-8 md:p-10 border flex flex-col h-full transition-all duration-500 hover:shadow-[0_30px_60px_-20px_rgba(123,28,42,0.18)]"
