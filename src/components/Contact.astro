@@ -21,11 +21,11 @@ const whatsappParty  = "https://wa.me/923135022787?text=" + encodeURIComponent("
         Contact · Tashreef
       </p>
       <h2 class="section-heading" style="color: var(--color-charcoal);">
-        Reserve your <em>wedding morning</em> at the studio.
+        Check our <em>calendar</em> for consultations.
       </h2>
       <p class="mt-6 text-lg leading-relaxed" style="color: rgba(26,26,26,0.7);">
-        Bookings are taken in person, by phone, or via WhatsApp. Bridal dates fill quickly during
-        peak shaadi season — we recommend reaching out at least 6–8 weeks before your event.
+        Book a free consultation to discuss your bridal or party makeup needs.
+        See available dates below, or reach out via WhatsApp for urgent inquiries.
       </p>
     </div>
 
@@ -149,34 +149,29 @@ const whatsappParty  = "https://wa.me/923135022787?text=" + encodeURIComponent("
         </a>
       </div>
 
-      <!-- Map column -->
+      <!-- Calendly column -->
       <div class="lg:col-span-7">
         <div class="relative h-full min-h-[460px] lg:min-h-full border overflow-hidden" style="border-color: rgba(201,168,76,0.4);">
-          <iframe
-            src={mapsEmbed}
-            class="absolute inset-0 w-full h-full"
-            style="filter: grayscale(0.25) contrast(0.95) sepia(0.08);"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen
-            title="SolaSinghar by Uzma — Java Road, Rawat, Islamabad map"
-          ></iframe>
+          <!-- Calendly inline widget -->
+          <div class="calendly-inline-widget" data-url="https://calendly.com/solasingharrawat/bridal-makeup-consultation" style="min-width:320px;height:600px;"></div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
 
-          <!-- Map overlay caption -->
-          <div
-            class="absolute bottom-6 left-6 right-6 md:right-auto md:max-w-sm p-5 backdrop-blur-md"
-            style="background-color: rgba(250,246,240,0.96); border: 1px solid var(--color-gold);"
+        <!-- Google Maps link below calendar -->
+        <div class="text-center mt-6">
+          <a
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] transition-colors duration-500"
+            style="color: var(--color-burgundy);"
           >
-            <div class="text-[10px] uppercase tracking-[0.32em] mb-2" style="color: var(--color-burgundy);">
-              The Studio
-            </div>
-            <div class="text-base font-medium" style="color: var(--color-charcoal); font-family: var(--font-heading); font-size: 1.25rem;">
-              Best Bridal Makeup in Rawat &amp; Islamabad
-            </div>
-            <div class="text-sm mt-1" style="color: var(--color-charcoal-soft);">
-              Near Java Road · 20 min from F-7
-            </div>
-          </div>
+            📍 View studio location on Google Maps
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M14 4h6v6"/><path d="M10 14L20 4"/>
+              <path d="M20 14v6h-6"/><path d="M4 4h6"/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
